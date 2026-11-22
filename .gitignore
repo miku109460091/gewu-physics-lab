@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+*.log
+.edge-*/
+.DS_Store
+Thumbs.db

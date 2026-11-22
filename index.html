@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="格物 · 高中物理分层学习实验室：理论讲解、互动实验、例题精析与学习路径，适合不同基础的高中生。">
+  <meta name="theme-color" content="#0b1626">
+  <title>格物 · 高中物理实验室</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230b1626'/%3E%3Ccircle cx='32' cy='32' r='6' fill='%2378e6d4'/%3E%3Cellipse cx='32' cy='32' rx='23' ry='10' fill='none' stroke='%2378e6d4' stroke-width='3' transform='rotate(35 32 32)'/%3E%3Cellipse cx='32' cy='32' rx='23' ry='10' fill='none' stroke='%23f5b85a' stroke-width='2.4' transform='rotate(-40 32 32)'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/style.css">
+  <script defer src="js/bundle.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#app">跳到主要内容</a>
+
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar" aria-label="主导航">
+      <div class="sidebar-glow" aria-hidden="true"></div>
+      <a class="brand" href="#/home" aria-label="格物物理首页">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none">
+            <circle cx="24" cy="24" r="4.6" fill="currentColor"/>
+            <ellipse cx="24" cy="24" rx="19" ry="8" stroke="currentColor" stroke-width="1.8" transform="rotate(32 24 24)"/>
+            <ellipse cx="24" cy="24" rx="19" ry="8" stroke="#f5b85a" stroke-width="1.5" transform="rotate(-42 24 24)"/>
+          </svg>
+        </span>
+        <span class="brand-text">
+          <strong>格物</strong>
+          <small>PHYSICS LAB</small>
+        </span>
+      </a>
+
+      <div class="sidebar-section-label">学习空间</div>
+      <nav class="nav-list" id="mainNav">
+        <a href="#/home" data-nav="home"><span data-icon="home"></span><span>学习概览</span></a>
+        <a href="#/courses" data-nav="courses"><span data-icon="book"></span><span>分层课堂</span><span class="nav-count">16</span></a>
+        <a href="#/path" data-nav="path"><span data-icon="route"></span><span>学习路径</span></a>
+        <a href="#/labs" data-nav="labs"><span data-icon="flask"></span><span>实验模拟</span><span class="nav-dot"></span></a>
+        <a href="#/problems" data-nav="problems"><span data-icon="bulb"></span><span>例题精析</span></a>
+        <a href="#/progress" data-nav="progress"><span data-icon="chart"></span><span>学习档案</span></a>
+      </nav>
+
+      <div class="sidebar-section-label level-label">我的学习层级</div>
+      <div class="level-switch" id="levelSwitch" role="group" aria-label="选择学习层级">
+        <button type="button" data-level="foundation" title="夯实概念，跟住课堂">筑基</button>
+        <button type="button" data-level="advanced" title="掌握模型，稳定得分">进阶</button>
+        <button type="button" data-level="challenge" title="综合迁移，冲击高分">挑战</button>
+      </div>
+      <p class="level-hint" id="levelHint">当前推荐：进阶 · 模型与方法</p>
+
+      <div class="sidebar-card">
+        <div class="sidebar-card-top">
+          <span>本周学习</span>
+          <strong id="sidebarWeekProgress">0 / 4</strong>
+        </div>
+        <div class="mini-progress"><i id="sidebarWeekBar" style="width:0%"></i></div>
+        <p id="sidebarWeekText">完成 1 节课程，就能点亮进度。</p>
+      </div>
+
+      <div class="sidebar-footer">
+        <div class="streak-pill"><span data-icon="flame"></span><b id="sidebarStreak">1</b> 天连续学习</div>
+        <button class="icon-btn sidebar-search" type="button" data-open-search aria-label="搜索">
+          <span data-icon="search"></span>
+        </button>
+      </div>
+    </aside>
+
+    <div class="page-shell">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="icon-btn mobile-menu" id="mobileMenuBtn" type="button" aria-label="打开导航菜单" aria-expanded="false">
+            <span data-icon="menu"></span>
+          </button>
+          <div class="breadcrumb" id="breadcrumb">
+            <span>学习空间</span><i>/</i><b>学习概览</b>
+          </div>
+        </div>
+        <div class="topbar-actions">
+          <button class="search-trigger" type="button" data-open-search>
+            <span data-icon="search"></span>
+            <span>搜索课程、实验、例题</span>
+            <kbd>Ctrl K</kbd>
+          </button>
+          <div class="streak-mini" title="连续学习天数">
+            <span data-icon="flame"></span><b id="topStreak">1</b>
+          </div>
+          <button class="profile-btn" type="button" data-go="progress" aria-label="进入学习档案">
+            <span class="avatar">学</span>
+            <span class="profile-meta"><b>我的学习档案</b><small>本地进度已保存</small></span>
+            <span data-icon="chevron"></span>
+          </button>
+        </div>
+      </header>
+
+      <main id="app" tabindex="-1" aria-live="polite"></main>
+      <footer class="site-footer">
+        <span>格物 · 把抽象的物理，变成看得见的思考</span>
+        <span class="footer-dot"></span>
+        <span>所有学习进度仅保存在本机浏览器</span>
+      </footer>
+    </div>
+  </div>
+
+  <div class="sidebar-scrim" id="sidebarScrim" hidden></div>
+
+  <div class="search-overlay" id="searchOverlay" hidden>
+    <div class="search-backdrop" data-close-search></div>
+    <div class="search-panel" role="dialog" aria-modal="true" aria-label="站内搜索">
+      <div class="search-input-wrap">
+        <span data-icon="search"></span>
+        <input id="searchInput" type="search" placeholder="输入知识点、实验或题目关键词…" autocomplete="off">
+        <kbd>ESC</kbd>
+      </div>
+      <div class="search-results" id="searchResults"></div>
+      <div class="search-footer">
+        <span><kbd>↑</kbd><kbd>↓</kbd> 选择</span>
+        <span><kbd>↵</kbd> 打开</span>
+        <span>共 <b id="searchCount">0</b> 条结果</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-layer" id="modalLayer" hidden>
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"></div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+  <noscript>
+    <div style="padding:2rem;text-align:center">本网站需要启用 JavaScript 才能使用互动实验与学习进度。</div>
+  </noscript>
+</body>
+</html>
